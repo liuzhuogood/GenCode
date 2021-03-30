@@ -16,43 +16,37 @@ gendcode -c config.yml
 ### 配置文件
 ##### config.yml
 ``` YAML
-# 生成模式： 1：数据库 2:自定义表
-genMode: 1
-templatePath: './'
+# 模板文件地址
+#templatePath: '/data'
 dbConf:
+  # MySQL / Oracle / Sqlite / postgresql
   db_type: MySQL
   db_name: admin
   user: admin
   pwd: Vile123adMin_#
   host: 5slive.com
   # 多表使用;分割
-  table_name: sys_menu_router
+  table_name: sys_operator
 
 # Java
 dataTypeMapping:
   varchar|text: String
-  decimal(10,0): int
-  decimal(10,2): BigDecimal
+  decimal(10,2): int
 
 # Python
 #dataTypeMapping:
 #   default:
-#  varchar|text: str
+#  varchar(*)|text: str
 
 myself:
   author: liuzhuo
   mail: liuzhuogood@foxmail.com
-  sigin: 我的签名
-
-# 直接用定义的表
-table:
-  sys_users: 用户表
-  columns:
-    id: string
+  sign: 我的签名
 
 jinja2:
   variable_start_string: '{{'
   variable_end_string: '}}'
+
 
 ```
 
