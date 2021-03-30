@@ -1,6 +1,6 @@
-# gCode
+# gencode
 
-**[gCode](https://github.com/liuzhuogood/GenCode)** 
+**[gencode](https://github.com/liuzhuogood/GenCode)** 
 代码生成工具，可以连接MySQL\Oracle\postgresql\sqlite根据jinjan2模板生成出自已想要的代码
 
 ### 安装
