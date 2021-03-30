@@ -3,7 +3,6 @@ import re
 
 from db_hammer.util.file import get_dir_files
 
-from gencode.config import jinja2_config
 from gencode.models import Gcode
 
 
@@ -86,7 +85,8 @@ def get_path_list(path, encode="utf-8") -> [Gcode]:
     ll = get_dir_files(path=path, absolute=True, mode="AFD")
     ls = []
     for a in ll:
-        if re.match(".*gcode$", a) or os.path.isdir(a):
+        from gencode.config import jinja2_config
+        if a.endswith(".gcode") or os.path.isdir(a):
             g = Gcode()
             g.temp_path = a
             g.encode = encode
