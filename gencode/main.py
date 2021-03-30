@@ -39,13 +39,16 @@ def to_template(gcode: Gcode, data) -> Gcode:
 def gen_result(gcode: Gcode):
     """生成目录和文件"""
     if gcode.is_dir:
-        os.makedirs(gcode.target_path, exist_ok=True)
+        if not os.path.exists(gcode.target_path):
+            os.makedirs(gcode.target_path, exist_ok=True)
+            print("创建目录：" + os.path.abspath(gcode.target_path))
     else:
         os.makedirs(os.path.dirname(gcode.target_path), exist_ok=True)
         f = open(gcode.target_path, mode="wb+")
         f.write(gcode.target_content.encode(encoding=gcode.encode))
         f.flush()
         f.close()
+        print("生成代码：" + os.path.abspath(gcode.target_path))
 
 
 @click.command()

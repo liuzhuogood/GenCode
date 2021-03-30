@@ -29,8 +29,8 @@ def get_data(table_name=None):
         table.TableName = get_TableName(obj["table_name"])
         table.columns = []
 
-        if table_name is not None:
-            cols = get_columns_by_table(obj["table_name"])
+        if table_name is not None and table_name.lower() == table.xx_table_name:
+            cols = get_columns_by_table(table_name)
             for c in cols:
                 column = Column()
                 column.comment = c["comment"]

@@ -8,7 +8,7 @@ dbConf:
   pwd: Vile123adMin_#
   host: 5slive.com
   # 多表使用;分割
-  table_name: sys_menu_router
+  table_name: sys_operator
 
 # Java
 dataTypeMapping:
