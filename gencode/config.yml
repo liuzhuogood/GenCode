@@ -6,7 +6,7 @@ dbConf:
   db_name: admin
   user: admin
   pwd: Vile123adMin_#
-  host: 5slive.com
+  host: 127.0.0.1
   # 多表使用;分割
   table_name: sys_operator
 
