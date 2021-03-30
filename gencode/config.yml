@@ -1,0 +1,31 @@
+# 模板文件地址
+#templatePath: '/data'
+dbConf:
+  # MySQL / Oracle / Sqlite / postgresql
+  db_type: MySQL
+  db_name: admin
+  user: admin
+  pwd: Vile123adMin_#
+  host: 5slive.com
+  # 多表使用;分割
+  table_name: sys_menu_router
+
+# Java
+dataTypeMapping:
+  varchar|text: String
+  decimal(10,2): int
+
+# Python
+#dataTypeMapping:
+#   default:
+#  varchar(*)|text: str
+
+myself:
+  author: liuzhuo
+  mail: liuzhuogood@foxmail.com
+  sign: 我的签名
+
+jinja2:
+  variable_start_string: '{{'
+  variable_end_string: '}}'
+
