@@ -89,6 +89,7 @@ def get_path_list(path, encode="utf-8") -> [Gcode]:
         if a.endswith(".gcode") or os.path.isdir(a):
             g = Gcode()
             g.temp_path = a
+            g.temp_base_name = os.path.basename(a)
             g.encode = encode
             if os.path.isdir(a) and jinja2_config["variable_start_string"] in a and jinja2_config[
                 "variable_end_string"] in a:
@@ -108,8 +109,9 @@ def get_path_list(path, encode="utf-8") -> [Gcode]:
 
 def get_dataType(db_data_type, data_length):
     from gencode.config import data_type_mapping
+    # print(data_type_mapping.keys(), "==>", db_data_type, data_length)
     for d_key in data_type_mapping.keys():
         d_keys = d_key.split("|")
-        if db_data_type in d_keys or f"{db_data_type}({data_length})":
+        if db_data_type in d_keys or f"{db_data_type}({data_length})" in d_keys:
             return data_type_mapping[d_key]
     return db_data_type

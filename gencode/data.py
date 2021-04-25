@@ -4,6 +4,8 @@ from gencode.db import get_all_tables, get_columns_by_table
 from gencode.models import Table, Column
 from gencode.utils import *
 
+is_debug = True
+
 
 def get_data(table_name=None):
     from gencode.config import myself
@@ -31,9 +33,11 @@ def get_data(table_name=None):
 
         if table_name is not None and table_name.lower() == table.xx_table_name:
             cols = get_columns_by_table(table_name)
+            del_same_colname={}
             for c in cols:
                 column = Column()
                 column.comment = c["comment"]
+                column.db_dataType = c["data_type"]
                 column.dataType = get_dataType(c["data_type"], c["data_length"])
                 column.data_length = c["data_length"]
                 column.column_name = str(c["column_name"]).lower()
@@ -42,9 +46,12 @@ def get_data(table_name=None):
                 column.columnName = get_columnName(c["column_name"])
                 column.columnname = get_columnName(c["column_name"]).lower()
                 column.COLUMNNAME = get_columnName(c["column_name"]).upper()
+                column.is_pk = bool(c["is_pk"])
                 table.columns.append(column)
             c_table = table
         ts.append(table)
+
+    print_tables(ts)
 
     d = {
         "tables": ts,
@@ -58,3 +65,27 @@ def get_data(table_name=None):
     d.update(c_table.__dict__)
 
     return d
+
+
+def print_tables(ts):
+    global IS_DEBUG
+    from rich.console import Console
+    from rich.table import Table as pTable
+    console = Console()
+    table = pTable(show_header=True, header_style="bold magenta")
+    table.add_column("ColumnName")
+    table.add_column("DB_DataType")
+    table.add_column("DataType")
+    table.add_column("DataLength")
+    table.add_column("PK")
+    table.add_column("Comment")
+    for t in ts:
+        table.rows.clear()
+
+        c: Column = None
+        for c in t.columns:
+            table.add_row(c.column_name, c.db_dataType, c.dataType, str(c.data_length), "Y" if c.is_pk else '',
+                          c.comment)
+        if len(table.rows) > 0 and is_debug:
+            console.print(t.XX_TABLE_NAME + "  " + t.comment, style="bold blue")
+            console.print(table)

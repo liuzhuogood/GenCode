@@ -17,6 +17,7 @@ class Table:
 
 
 class Column:
+    db_dataType: str
     comment: str
     column_name: str
     Column_Name: str
@@ -26,10 +27,12 @@ class Column:
     COLUMNNAME: str
     dataType: str
     data_length: int
+    is_pk: bool
 
 
 class Gcode:
     is_dir = False
+    temp_base_name: str
     temp_path: str
     temp_content: str
     target_path: str

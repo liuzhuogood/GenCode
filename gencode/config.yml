@@ -1,31 +1,43 @@
-# 模板文件地址
-#templatePath: '/data'
+#dbConf:
+#  # MySQL / Oracle / Sqlite / postgresql
+#  db_type: MySQL
+#  db_name: admin
+#  user: admin
+#  pwd: Lz#27365606
+#  host: 5slive.com
+#  # 多表使用;分割
+#  table_name: sys_user
+
+
 dbConf:
   # MySQL / Oracle / Sqlite / postgresql
-  db_type: MySQL
-  db_name: admin
-  user: admin
-  pwd: Vile123adMin_#
-  host: 127.0.0.1
+  db_type: Oracle
+  db_name: orcl
+  user: hsalcs
+  pwd: hsalcs$test
+  host: 172.18.30.13
   # 多表使用;分割
-  table_name: sys_operator
+  table_name: LTC_CONER_B
+
+
+
 
 # Java
 dataTypeMapping:
-  varchar|text: String
-  decimal(10,2): int
+  VARCHAR2|text: String
+  decimal(10,2)|NUMBER: int
 
 # Python
 #dataTypeMapping:
-#   default:
-#  varchar(*)|text: str
+#  varchar|text: str
+#  decimal(10,2)|tinyint: int
 
 myself:
   author: liuzhuo
   mail: liuzhuogood@foxmail.com
   sign: 我的签名
 
-jinja2:
-  variable_start_string: '{{'
-  variable_end_string: '}}'
+
+#variable_start_string: '${'
+#variable_end_string: '}'
 

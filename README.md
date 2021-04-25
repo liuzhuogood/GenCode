@@ -84,7 +84,12 @@ jinja2:
 | COLUMNAME     | 列名变形                      |
 | comment       | 列名备注                      |
 | dataType       | 列名 的类型,可以通过配置映射 |
+| is_pk       | 1：是主键 0：不是主键 |
 
+
+##### 方法
+* ljust(str,[width],[fill_char]) : 左补全字符
+* rjust(str,[width],[fill_char]) : 右补全字符
 
 ### 模板
 模板可以是文件目录，也可是文件，如果是文件为了区分必须以`.gcode`后缀命名，比如：
